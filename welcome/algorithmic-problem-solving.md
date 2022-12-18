@@ -1,108 +1,131 @@
-# Welcome to Technical Interview Preparation
+# Algorithmic Problem Solving
 
 ## Learning Goals
 
-- Explain the technical interview process
+- Develop a process for solving algorithm problems
 
 ## Introduction
 
-_Please note that completion of this content is not required for graduation or
-moving to the next Phase. It is optional. Please prioritize the required
-coursework._
+An algorithm is just a procedure that solves a problem. If you're wondering if
+that's any different from the work you've already been doing, we've got good
+news: It's not!
 
-In addition to preparing a portfolio of awesome projects to show off to your
-future employer, you'll also need to be prepared for technical interviews. In
-this part of the course, we'll help you prepare by asking you to solve a series
-of problems on algorithms and/or data structures. You may find some problems
-easy and others incredibly difficult. Don't worry - this is normal. It takes
-time to get used to solving these types of problems.
+In this reading, we'll go over the importance of solving such problems and how
+to approach coming up with solutions.
 
-Before we get into how to approach progressing through this section, let's talk
-about the two types of technical interviews.
+## Why Solve Algorithm Problems?
 
-## Two Types of Technical Interviews
+Working through these challenges will not only help you during the technical
+interview process, it will also help you become a better programmer. Learning
+how to break apart a problem into pieces you can understand and then code a
+solution for is a vital skill, as is learning to think about the different types
+of inputs - or test cases - your solution must account for.
 
-Your technical interview may be held asynchronously or synchronously. During an
-asynchronous technical interview, you may be asked to solve algorithmic problems
-in a timed environment by yourself. For a synchronous interview, you will likely
-be asked to whiteboard and solve the problem in front of your interviewer.
+As you grow as a developer, you'll find yourself leaning on these skills more
+and more, especially as your work becomes more challenging. These skills will
+truly help you in any and every project you take on.
 
-Async technical interviews typically require candidates to problem solve alone.
-Once the solution is submitted, the hiring team will review your solution and
-determine whether you should move forward in the hiring process. At this point,
-they'll likely require that most or all problems be solved and will also
-consider the quality of the solution/s.
+## How to Solve a Problem
 
-During synchronous interviews, the interviewer is likely looking to see how you:
+Two mistakes many programmers make are to jump into code too fast or to start
+thinking about code optimization too early. Both of these mistakes can greatly
+increase the amount of time it takes to solve a problem and increase
+frustration. To avoid this, here are the steps we recommend taking:
 
-- Work in a team
-- Handle feedback
-- Talk technically
-- Handle obstacles
-- Approach solving a problem / think
-- Evaluate different approaches to solving a problem and make decisions
+### 1. Spend Time Understanding the Problem
 
-At this stage, you may be able to move forward in the hiring process if you
-demonstrate good communication skills, logical thinking, perseverance, calm
-under pressure, and graciousness towards your interviewer's feedback even if you
-are unable to solve the problem. Asking good questions to fully understand the
-problem or get unstuck are normally welcome. Interviewers also typically expect
-you to come up with your own test cases to ensure the problem is actually
-solved. This portion of the interview might require you to largely solve the
-problem alone on a whiteboard or IDE, or through pair programming where the
-interviewer is either the driver or navigator. Many interviewers are forgiving
-of syntax errors, and they generally don't expect you to have every piece of the
-core language memorized.
+Before you dive into solving the problem, take the time to read it and describe
+it in your own words. You might find it useful to rewrite the problem before
+moving on.
 
-During this portion of the course, we will be preparing you for both types of
-interviews, so it's important to take the time to solve as many problems as you
-can alone and to complete the paired assignments, if applicable.
+If you have been given test cases, look at each one, apply your understanding of
+the problem to them to determine what the answer is, and then check if your
+answer matches the actual answer (e.g. work it out on paper or in your head, no
+code necessary here). If your answer doesn't match, you need to spend more time
+understanding the problem.
 
-## How to Progress Through This Section
+### 2. Write Your Own Test Cases
 
-We recommend approaching these problems in order by yourself since each problem
-increases in difficulty. For a problem that is meant to be solved on the same
-day, work on it for 30 minutes. If you can't solve it in 30 minutes, work on
-something else, and then come back to it and give yourself up to 30 more
-minutes. For problems that are meant to be solved over the course of several
-days, set aside 30 to 60 minutes each day to work on them. If you reach the time
-limit and have not solved the problem, look at our solution or someone else's
-and take time to understand why it works. Some days, due to your workload, you
-may need to set a shorter time limit; we recommend a minimum of 20 minutes
-total.
+Now that you understand the problem and why the answers to the test cases are
+what they are, you're ready to write your own test cases! We are not
+recommending that you write test suites in Rspec or Jest. Instead, you simply
+print the result of calling your solution method and compare it to the answer
+you expected.
 
-If you fall behind, e.g. you didn't solve Week 1 Day 2's problem on time, keep
-in mind that we usually have bonus problems and spare time available in Week 3
-of any Phase. You can always use this time to catch up on problems you missed.
-Don't worry if you don't finish all of the problems before the next Phase, you
-can always come back to them when you have time or even after graduation.
+Be aware that algorithm problem descriptions rarely provide all of the test
+cases you need to account for, so it's incredibly important that you also come
+up with your own. This is true when using online platforms, such as Leetcode and
+HackerRank, as well as during interviews.
 
-For any type of problem, if you were able to pass most of the test cases but
-just can't quite solve a couple of the edge cases, consider looking for a
-solution to compare yours to. If we provide a solution, you can compare it to
-ours, but you can also ask other students and search the Internet. Take the time
-to understand why the solutions work and consider working on your solution until
-it works given what you've learned.
+### 3. Pseudocode
 
-## Some Things to Keep in Mind
+Remember how we asked you to check your understanding of the problem by going
+through the test cases and then writing your own tests? Congratulations! This
+means that on some level, you know how to solve the problem. Before you start
+coding, write pseudocode, which is just a plain description of how to solve the
+problem. For example, the pseudocode for copying only numbers from one array to
+another might look like this:
 
-You may struggle with some or many of these problems. Be patient with yourself
-and trust that with time and practice, you'll improve. You'll be amazed at how
-much you progress with each week or month!
+```txt
+initialize empty array called result
 
-If you look at others' solutions, be aware that shorter doesn't mean better. Aim
-for a solution that makes sense to you, which you can also explain to others.
-Three lines of easy-to-understand code is better than one line of confusing
-code.
+iterate over each item in the input array:
+  if element is a number:
+    push item onto result
 
-If you use an online platform that provides information on how fast your code
-runs or how well it utilizes memory, take that information with a giant grain of
-salt. Many of those platforms do not tell you how they arrive at those results,
-and you may find that the results vary greatly even when running the same code.
-You might also find that someone with a similar solution to yours has wildly
-different performance results - an indication that the platform isn't
-calculating results correctly.
+return result
+```
 
-Lastly, try not to compare yourself to others at this point. Everyone progresses
-at a different pace, and that's OK. The key is to keep trying while taking care
-of yourself mentally and physically.
+Note that different people write pseudocode differently. The key is to make it
+easy to understand yourself and explain to others - this is the map to the code
+you're about to write! I often paste my pseudocode into my workspace as
+comments, and then code each piece alongside the matching comment.
+
+You can also test this procedure against the test cases before writing any code.
+Validating and rewriting pseudocode will likely save you time. You might also
+wish to think about additional solutions: there's always more than one way to
+solve a problem.
+
+### 4. Code!
+
+Now that you have a map, convert it to code!
+
+At this point, the goal is to make it work: pass those test cases! If you're
+having a hard time getting all of the test cases working, check that your
+pseudocode actually solves for all of those cases and then check that your code
+does what the pseudocode says it should.
+
+### 5. Make It Clean and Readable
+
+Once your solution is well, a solution, it's time to refactor your code so that
+it's easy to read, not just for you but also for others. Use well-named
+variables and convert blocks of code to methods when necessary. If you find any
+unneeded or redundant code, delete it.
+
+Don't forget to test your code again!
+
+### 6. Optimize?
+
+Don't optimize your code for time or space complexity (e.g. how long it takes to
+run or how much memory it's using) unless you absolutely need to. There are
+three major situations that call for optimization:
+
+- The solution is hanging on certain test cases, and therefore cannot pass since
+  it's taking too long
+- You were asked to do so
+- You think it would be fun to try
+
+## Conclusion
+
+We hope these steps help you solve the problems you're about to encounter.
+Remember, they can be applied to all types of problems, including building web
+apps. Don't be afraid to spend more time thinking and planning than coding. Take
+it from those of us who have been coding for years: we often spend more time
+thinking, talking, and writing than we do coding.
+
+Before we go, we'd like to leave you with some final tips:
+
+- Talk to yourself while you code: think out loud
+- Consider recording your screen and voice as you solve a problem so you can
+  review your performance
+- Take your time and be patient with yourself!
