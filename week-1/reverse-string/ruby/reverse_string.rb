@@ -1,3 +1,5 @@
+require "benchmark"
+
 def reverse_string(str)
   new_string = ""
   str.chars.each do |char|
