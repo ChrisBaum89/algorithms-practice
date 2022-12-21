@@ -1,5 +1,12 @@
 def reverse_string(str)
-  # type your code in here
+  # looking for "him" to switch to "mih"
+  # need to break "him" into an array for each character
+  # array = [h, i, m]
+  # we want:
+  # array[0] = newarray[2]
+  # array[1] = newarray[1]
+  # array[2] = newarray[2]
+  
 end
 
 if __FILE__ == $PROGRAM_NAME
