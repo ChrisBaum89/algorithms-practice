@@ -7,8 +7,14 @@ def reverse_string(str)
   # array[1] = newarray[1]
   # array[2] = newarray[2]
   orig_str_array = str.split("")
-  print orig_str_array
-  
+  new_str_array = []
+  end_length = orig_str_array.length - 1
+  for i in 0..end_length do
+    pointer = end_length - i
+    new_str_array.push(orig_str_array[pointer])
+  end
+  print new_str_array
+
 end
 
 if __FILE__ == $PROGRAM_NAME
