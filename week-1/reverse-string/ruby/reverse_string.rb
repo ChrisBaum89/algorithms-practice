@@ -46,3 +46,10 @@ end
 #   return new_string
 
 # end
+
+# second attempt:
+# create new variable
+# cycle through each character of the string and add it to the beginning of the new_string
+# variable.
+
+# did some speed testing and second attempt was much faster
