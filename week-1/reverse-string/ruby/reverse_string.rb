@@ -13,7 +13,8 @@ def reverse_string(str)
     pointer = end_length - i
     new_str_array.push(orig_str_array[pointer])
   end
-  print new_str_array
+  new_string = new_str_array.join("")
+  return new_string
 
 end
 
