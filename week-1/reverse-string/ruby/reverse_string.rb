@@ -6,6 +6,8 @@ def reverse_string(str)
   # array[0] = newarray[2]
   # array[1] = newarray[1]
   # array[2] = newarray[2]
+  orig_str_array = str.split("")
+  print orig_str_array
   
 end
 
