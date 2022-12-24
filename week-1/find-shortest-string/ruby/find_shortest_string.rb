@@ -1,5 +1,14 @@
+
+### I actually did this the same way the solution did theirs (long hand way) without looking at it!!!
 def find_shortest_string(arr)
-  # type your code in here
+  smallest_str = arr[0]
+  arr.each do |x|
+    if x.length < smallest_str.length
+      smallest_str = x
+    end
+  end
+
+  return smallest_str
 end
 
 if __FILE__ == $PROGRAM_NAME
@@ -23,3 +32,5 @@ end
 
 # Please add your pseudocode to this file
 # And a written explanation of your solution
+
+# in an array of string, we must find the and return the shortest string
