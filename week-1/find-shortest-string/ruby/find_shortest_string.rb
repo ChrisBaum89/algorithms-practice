@@ -34,3 +34,6 @@ end
 # And a written explanation of your solution
 
 # in an array of string, we must find the and return the shortest string
+# need to set a starting point with arr[0] as that will be considered out shortest string to start
+# iterated through each and compare it to the stored shortest string.
+# if it is shorter then replace the string stored in the shortest_string variable
