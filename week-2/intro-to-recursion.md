@@ -1,108 +1,193 @@
-# Welcome to Technical Interview Preparation
+# Introduction to Recursion
 
 ## Learning Goals
 
-- Explain the technical interview process
+- Write recursive methods
+- Define the "base case" of a recursive method
+- Explain the role of the call stack in a recursive method
+- Identify when to use recursion to solve algorithm problems
 
 ## Introduction
 
-_Please note that completion of this content is not required for graduation or
-moving to the next Phase. It is optional. Please prioritize the required
-coursework._
+A recursive method is defined as any method that calls itself.
 
-In addition to preparing a portfolio of awesome projects to show off to your
-future employer, you'll also need to be prepared for technical interviews. In
-this part of the course, we'll help you prepare by asking you to solve a series
-of problems on algorithms and/or data structures. You may find some problems
-easy and others incredibly difficult. Don't worry - this is normal. It takes
-time to get used to solving these types of problems.
+Typically, recursion is used in a manner similar to a loop: a procedure is run
+over and over again until it reaches a stopping point. Recursive methods must
+call themselves to be considered recursive.
 
-Before we get into how to approach progressing through this section, let's talk
-about the two types of technical interviews.
+We can use recursion anywhere we use a loop, and vice versa. Sometimes, it's a
+lot easier to solve a problem using recursion, as opposed to a loop, and
+sometimes it's easier to use a loop. It takes time and practice to figure out
+when to choose one over the other.
 
-## Two Types of Technical Interviews
+Here is an example of a recursive method:
 
-Your technical interview may be held asynchronously or synchronously. During an
-asynchronous technical interview, you may be asked to solve algorithmic problems
-in a timed environment by yourself. For a synchronous interview, you will likely
-be asked to whiteboard and solve the problem in front of your interviewer.
+```rb
+def talk_to_myself(n)
+  talk_to_myself(n)
+end
+```
 
-Async technical interviews typically require candidates to problem solve alone.
-Once the solution is submitted, the hiring team will review your solution and
-determine whether you should move forward in the hiring process. At this point,
-they'll likely require that most or all problems be solved and will also
-consider the quality of the solution/s.
+In the above code, the method `talk_to_myself` is recursive because it calls
+itself. It, however, has a gigantic problem: there is no stopping point!
 
-During synchronous interviews, the interviewer is likely looking to see how you:
+## Base Case/s (aka the stopping point/s)
 
-- Work in a team
-- Handle feedback
-- Talk technically
-- Handle obstacles
-- Approach solving a problem / think
-- Evaluate different approaches to solving a problem and make decisions
+The base case (or cases) tells the recursive method when to stop running. Base
+cases are often written using conditional statements (such as the `if` statement
+below), though they don't have to be (it depends on the method and what it needs
+to do).
 
-At this stage, you may be able to move forward in the hiring process if you
-demonstrate good communication skills, logical thinking, perseverance, calm
-under pressure, and graciousness towards your interviewer's feedback even if you
-are unable to solve the problem. Asking good questions to fully understand the
-problem or get unstuck are normally welcome. Interviewers also typically expect
-you to come up with your own test cases to ensure the problem is actually
-solved. This portion of the interview might require you to largely solve the
-problem alone on a whiteboard or IDE, or through pair programming where the
-interviewer is either the driver or navigator. Many interviewers are forgiving
-of syntax errors, and they generally don't expect you to have every piece of the
-core language memorized.
+```rb
+def talk_to_myself(n)
+  return if n <= 0.5
 
-During this portion of the course, we will be preparing you for both types of
-interviews, so it's important to take the time to solve as many problems as you
-can alone and to complete the paired assignments, if applicable.
+  talk_to_myself(n / 2)
+end
+```
 
-## How to Progress Through This Section
+Notice how the base case comes **before** the recursive call to the method. If
+the base case came after, it would be unreachable and we'd have the same exact
+problem as before: there would be no stopping point, and we'd hit a stack
+overflow.
 
-We recommend approaching these problems in order by yourself since each problem
-increases in difficulty. For a problem that is meant to be solved on the same
-day, work on it for 30 minutes. If you can't solve it in 30 minutes, work on
-something else, and then come back to it and give yourself up to 30 more
-minutes. For problems that are meant to be solved over the course of several
-days, set aside 30 to 60 minutes each day to work on them. If you reach the time
-limit and have not solved the problem, look at our solution or someone else's
-and take time to understand why it works. Some days, due to your workload, you
-may need to set a shorter time limit; we recommend a minimum of 20 minutes
-total.
+## Stack Overflow
 
-If you fall behind, e.g. you didn't solve Week 1 Day 2's problem on time, keep
-in mind that we usually have bonus problems and spare time available in Week 3
-of any Phase. You can always use this time to catch up on problems you missed.
-Don't worry if you don't finish all of the problems before the next Phase, you
-can always come back to them when you have time or even after graduation.
+When we run a `while` loop where the terminating condition is never reached, we
+get an infinite loop. A stack overflow is similar. However, code that would
+eventually terminate can also cause a stack overflow if it adds too many
+**frames** to the **call stack**.
 
-For any type of problem, if you were able to pass most of the test cases but
-just can't quite solve a couple of the edge cases, consider looking for a
-solution to compare yours to. If we provide a solution, you can compare it to
-ours, but you can also ask other students and search the Internet. Take the time
-to understand why the solutions work and consider working on your solution until
-it works given what you've learned.
+- A **frame** is like a snapshot of all of the variables and other necessary
+  information required to finish running the process.
+- The **call stack** is a data structure that stores frames.
 
-## Some Things to Keep in Mind
+Frames are removed from the stack in last-in-first-out (LIFO) order, similar to
+how we eat a stack of pancakes (the last pancake is put on the stack last, and
+we eat that one first).
 
-You may struggle with some or many of these problems. Be patient with yourself
-and trust that with time and practice, you'll improve. You'll be amazed at how
-much you progress with each week or month!
+Here's a gif demonstrating how function calls are added and removed from the stack:
 
-If you look at others' solutions, be aware that shorter doesn't mean better. Aim
-for a solution that makes sense to you, which you can also explain to others.
-Three lines of easy-to-understand code is better than one line of confusing
-code.
+![call stack demo](https://curriculum-content.s3.amazonaws.com/data-structures-and-algorithms/intro-to-recursion/call-stack.gif)
 
-If you use an online platform that provides information on how fast your code
-runs or how well it utilizes memory, take that information with a giant grain of
-salt. Many of those platforms do not tell you how they arrive at those results,
-and you may find that the results vary greatly even when running the same code.
-You might also find that someone with a similar solution to yours has wildly
-different performance results - an indication that the platform isn't
-calculating results correctly.
+Calling a function adds it to the top of the call stack. When the function
+finishes running (either because of an explicit or implicit return), it is
+removed from the top of the stack. All the other functions below the top of the
+stack can't continue running until they make their way up to the top.
 
-Lastly, try not to compare yourself to others at this point. Everyone progresses
-at a different pace, and that's OK. The key is to keep trying while taking care
-of yourself mentally and physically.
+This is why it's important that all recursive functions have a base case defined
+with some condition that causes the function to return. Otherwise, we'll
+continually add more function calls to the stack with no way to stop!
+
+## Depth-First Completion (LIFO)
+
+With recursive methods, the last recursive call will complete its execution
+first. Once that completes, the second to last recursive call will complete, and
+so on until only the first call to the method remains. Let's go back to our
+`talk_to_myself` method and illustrate each frame:
+
+```rb
+def talk_to_myself(n)
+  return if n <= 0.5
+
+  talk_to_myself(n / 2)
+end
+```
+
+- Initial Call (execution incomplete, paused on recursive call):
+  - `talk_to_myself(4)`
+- Recursive Call 1 (execution incomplete, paused on recursive call):
+  - `talk_to_myself(2)`
+- Recursive Call 2 (execution incomplete, paused on recursive call):
+  - `talk_to_myself(1)`
+- Recursive Call 3 (execution incomplete, paused on recursive call):
+  - `talk_to_myself(0.5)`
+- => Base case is hit because n <= 0.5, no more recursion!
+- Recursive Call 3 completes
+- Recursive Call 2 completes
+- Recursive Call 1 completes
+- Initial Call completes
+
+You can walk through and visualize this process [here][talk to myself viz]. The
+frames and their data are visualized on the right side of the screen and the
+arrows on the left inside the IDE show you which line is being executed. Notice
+that the arrow pauses on the recursive call if the base case is not hit. When a
+recursive call finally completes execution and returns up the stack, the
+previous call will then continue to run from that line onward (the line where
+the recursion was triggered).
+
+[talk to myself viz]: https://pythontutor.com/visualize.html#code=def%20talk_to_myself%28n%29%0A%20%20return%20if%20n%20%3C%3D%200.5%0A%0A%20%20talk_to_myself%28n%20/%202%29%0Aend%0A%0Atalk_to_myself%284%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=ruby&rawInputLstJSON=%5B%5D&textReferences=false
+
+## Dealing With Return Values
+
+Let's go back to our code example and modify it to return the string `'done'`:
+
+```rb
+def talk_to_myself(n)
+  return 'done' if n <= 0.5
+
+  # this is where our method pauses
+  # it's also where our return values return to
+  talk_to_myself(n / 2)
+end
+```
+
+That one small change will cause the method to return the string `'done'` from
+every recursive call and the initial call. But how?
+
+Let's illustrate how using stack frames again:
+
+- Initial Call (execution incomplete, paused on recursive call):
+  - `talk_to_myself(1)` # pauses on the line of the recursive call
+- Recursive Call 1 (execution incomplete, paused on recursive call):
+  - `talk_to_myself(0.5)` # pauses on the line of the recursive call
+- => Base case is hit because `n <= 0.5`, no more recursion! `'done'` is
+  returned to the previous frame
+- Recursive Call 1 receives `'done'`, and then returns `'done'` up the stack
+- Initial Call receives `'done'`, and then returns `'done'`
+
+But what if we added a line of code after the recursive call? What would happen
+then?
+
+```rb
+def talk_to_myself(n)
+  return 'done' if n <= 0.5
+
+  # this is where our method pauses
+  # it's also where our return values return to
+  talk_to_myself(n / 2)
+  `'The sheep goes baaaaaahhhh'`
+end
+```
+
+- Initial Call (execution incomplete, paused on recursive call):
+  - `talk_to_myself(1)` # pauses on the line of the recursive call
+- Recursive Call 1 (execution incomplete, paused on recursive call):
+  - `talk_to_myself(0.5)` # pauses on the line of the recursive call
+- => Base case is hit because n <= 0.5, no more recursion! `'done'` is returned to
+  the previous frame
+- Recursive Call 1 receives `'done'` and returns `'The sheep goes baaaaaahhhh'` up
+  the stack
+- Initial Call receives `'The sheep goes baaaaaahhhh'`, and then returns
+  `'The sheep goes baaaaaahhhh'`
+
+You can see a visualization of the code [here][talk to myself viz 2].
+
+[talk to myself viz 2]: https://pythontutor.com/visualize.html#code=def%20talk_to_myself%28n%29%0A%20%20return%20'done'%20if%20n%20%3C%3D%200.5%0A%0A%20%20%23%20this%20is%20where%20our%20method%20pauses%0A%20%20%23%20it's%20also%20where%20our%20return%20values%20return%20to%0A%20%20talk_to_myself%28n%20/%202%29%0A%20%20%60'The%20sheep%20goes%20baaaaaahhhh'%60%0Aend%0A%0Atalk_to_myself%281%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=ruby&rawInputLstJSON=%5B%5D&textReferences=false
+
+## Conclusion
+
+Don't worry if this hasn't all sunk in yet. We'll get you started slowly. If you
+find yourself having trouble with recursion, ask yourself these questions:
+
+- What is/are the base case/s? Many people add those first.
+- If you're getting a stack overflow: Why isn't my base case being triggered?
+- What should the recursive call return? And how should I use that value?
+  - Remember the return value goes up the stack to the line where the recursive
+    call was made.
+- What should the method return once it has completed execution?
+
+You can also try drawing out the frames to trace what's happening or use this
+[tool](http://pythontutor.com/visualize.html#mode=edit). Start small when
+mapping out what's happening, e.g. in the code examples above we used the values
+2 or 4, but never 20!
