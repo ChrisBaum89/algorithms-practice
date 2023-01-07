@@ -1,5 +1,6 @@
 def consecutive_substrings(string)
-  # type your code in here
+  arr = string.split('')
+  
 end
 
 if __FILE__ == $PROGRAM_NAME
