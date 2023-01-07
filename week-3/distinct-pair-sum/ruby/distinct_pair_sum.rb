@@ -1,18 +1,21 @@
+require 'set'
+
 def distinct_pair_sum(arr, k)
 
   pair_arr = []
-  index_max = arr.size - 1
-
-  for i in 0..index_max do
-    for j in i..index_max do
-      arr_sum = arr[i] + arr[j]
-      if arr_sum == k && (i != j)
-        pair_arr << [arr[i], arr[j]]
-      end
+  max_index = arr.size - 2
+  for i in 0..max_index
+    pair = [arr[i], arr[i+1]]
+    if equals_sum?(arr, i, k)
+      pair_arr.delete(pair.reverse)
+      pair_arr << pair
     end
   end
-
   pair_arr
+end
+
+def equals_sum?(arr, i, target_sum)
+  (arr[i] + arr[i+1]) == target_sum ? true : false
 end
 
 if __FILE__ == $PROGRAM_NAME
