@@ -1,5 +1,18 @@
 def distinct_pair_sum(arr, k)
-  # type your code in here
+
+  pair_arr = []
+  index_max = arr.size - 1
+
+  for i in 0..index_max do
+    for j in i..index_max do
+      arr_sum = arr[i] + arr[j]
+      if arr_sum == k && (i != j)
+        pair_arr << [arr[i], arr[j]]
+      end
+    end
+  end
+
+  pair_arr
 end
 
 if __FILE__ == $PROGRAM_NAME
